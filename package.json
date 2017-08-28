@@ -1,0 +1,14 @@
+{
+  "name": "drone-nodejs-example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/go-training/drone-nodejs-example.git",
+  "author": "Bo-Yi Wu <appleboy.tw@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "mocha": "^3.5.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  }
+}
