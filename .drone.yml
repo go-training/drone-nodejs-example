@@ -1,3 +1,7 @@
+workspace:
+  base: /node
+  path: drone/node-example
+
 clone:
   git:
     image: plugins/git
@@ -10,3 +14,9 @@ pipeline:
     commands:
       - yarn install
       - ./node_modules/.bin/mocha
+      - touch /node/a.txt
+
+  ls:
+    image: node:8.3.0
+    commands:
+      - ls -al /node/
