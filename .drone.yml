@@ -1,3 +1,8 @@
+clone:
+  git:
+    image: plugins/git
+    depath: 50
+
 pipeline:
   node:
     image: node:8.3.0
