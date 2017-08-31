@@ -9,5 +9,3 @@ pipeline:
     commands:
       - yarn install
       - ./node_modules/.bin/mocha
-    when:
-      event: [ push, tag ]
