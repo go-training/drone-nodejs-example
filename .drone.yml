@@ -9,14 +9,13 @@ clone:
     tags: true
 
 pipeline:
-  node:
+  frontend:
     image: node:8.3.0
     commands:
       - yarn install
       - ./node_modules/.bin/mocha
-      - touch /node/a.txt
 
-  ls:
+  backend:
     image: node:8.3.0
     commands:
-      - ls -al /node/
+      - echo "backend testing"
