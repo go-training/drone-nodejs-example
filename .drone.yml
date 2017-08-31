@@ -4,4 +4,5 @@ pipeline:
     commands:
       - yarn install
       - ls -al node_modules/.bin
-      - yarn test
+      - ./node_modules/.bin/mocha
+      - yarn run test
