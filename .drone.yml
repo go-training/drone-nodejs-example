@@ -11,8 +11,7 @@ clone:
 pipeline:
   frontend:
     image: node:8.3.0
-    environment:
-      - API_TOKEN=1234567890
+    secrets: [ api_token ]
     commands:
       - yarn install
       - ./node_modules/.bin/mocha
