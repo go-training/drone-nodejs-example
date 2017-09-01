@@ -17,5 +17,5 @@ pipeline:
       - node redis.js
 
 services:
-  redis:
+  cache:
     image: redis
