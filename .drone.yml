@@ -11,28 +11,11 @@ clone:
 pipeline:
   frontend:
     image: node:8.3.0
-    secrets: [ api_token ]
     commands:
-      - yarn install
-      - ./node_modules/.bin/mocha
-      - node env.js
-
-  frontend:
-    image: node:8.3.0
-    secrets:
-      - source: api_token
-        target: api_token_1
-    commands:
-      - yarn install
-      - ./node_modules/.bin/mocha
-      - node env.js
+      - echo frontend
+      - exit 1
 
   backend:
     image: node:8.3.0
-    secrets:
-      - source: api_token
-        target: api_token_2
     commands:
-      - yarn install
-      - ./node_modules/.bin/mocha
-      - node env.js
+      - echo backend
