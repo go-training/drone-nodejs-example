@@ -9,6 +9,14 @@ clone:
     tags: true
 
 pipeline:
+frontend:
+    image: node:8.3.0
+    secrets: [ api_token ]
+    commands:
+      - yarn install
+      - ./node_modules/.bin/mocha
+      - node env.js
+
   frontend:
     image: node:8.3.0
     secrets:
