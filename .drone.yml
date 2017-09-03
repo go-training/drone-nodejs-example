@@ -9,13 +9,16 @@ clone:
     tags: true
 
 pipeline:
-  frontend:
+  master:
     image: node:8.3.0
     commands:
-      - echo frontend
-      - exit 1
+      - echo master
+    when:
+      branch: master
 
-  backend:
+  develop:
     image: node:8.3.0
     commands:
-      - echo backend
+      - echo develop
+    when:
+      branch: develop
