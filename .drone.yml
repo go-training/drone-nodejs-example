@@ -49,9 +49,14 @@ pipeline:
     commands:
       - echo success
 
+  fail:
+    image: node:8.3.0
+    commands:
+      - exit 1
+
   notify:
     image: node:8.3.0
     commands:
       - echo notify
     when:
-      status: [ success, failure ]
+      status: [ failure ]
