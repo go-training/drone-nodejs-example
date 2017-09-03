@@ -22,3 +22,17 @@ pipeline:
       - echo develop
     when:
       branch: develop
+
+  push:
+    image: node:8.3.0
+    commands:
+      - echo push
+    when:
+      event: [ push ]
+
+  pull_request:
+    image: node:8.3.0
+    commands:
+      - echo pull_request
+    when:
+      event: [ pull_request ]
