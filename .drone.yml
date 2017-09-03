@@ -36,3 +36,10 @@ pipeline:
       - echo pull_request
     when:
       event: [ pull_request ]
+
+  tags:
+    image: node:8.3.0
+    commands:
+      - echo tags
+    when:
+      event: [ tag ]
