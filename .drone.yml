@@ -43,3 +43,15 @@ pipeline:
       - echo tags
     when:
       event: [ tag ]
+
+  success:
+    image: node:8.3.0
+    commands:
+      - echo success
+
+  notify:
+    image: node:8.3.0
+    commands:
+      - echo notify
+    when:
+      status: [ success, failure ]
