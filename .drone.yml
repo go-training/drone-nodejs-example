@@ -9,6 +9,11 @@ clone:
     tags: true
 
 pipeline:
+  fail:
+    image: node:8.3.0
+    commands:
+      - exit 1
+
   master:
     image: node:8.3.0
     commands:
@@ -48,11 +53,6 @@ pipeline:
     image: node:8.3.0
     commands:
       - echo success
-
-  fail:
-    image: node:8.3.0
-    commands:
-      - exit 1
 
   notify:
     image: node:8.3.0
