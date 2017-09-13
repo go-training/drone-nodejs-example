@@ -9,6 +9,18 @@ clone:
     tags: true
 
 pipeline:
+  scp:
+    image: appleboy/drone-ssh
+    host:
+      - 128.199.179.216
+    username: root
+    password: 1234
+    target: /home/appleboy/demo
+    source:
+      - env.js
+      - redis.js
+      - yarn.lock
+
   ssh:
     image: appleboy/drone-ssh
     host:
@@ -17,5 +29,4 @@ pipeline:
     password: 1234
     script:
       - echo "Hi I am appleboy"
-      - touch appleboy.txt
-      - ls -al /root/
+      - ls -al /home/appleboy/demo
