@@ -26,7 +26,9 @@ pipeline:
     host:
       - 128.199.179.216
     username: root
-    secrets: [ ssh_key ]
+    secrets:
+      - source: ssh_key_drone_demo
+        target: ssh_key
     target: /home/drone/demo
     source:
       - env.js
