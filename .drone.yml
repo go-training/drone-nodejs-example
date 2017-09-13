@@ -11,11 +11,13 @@ clone:
 pipeline:
   frontend:
     image: node:8.3.0
+    group: test
     commands:
       - echo "test frontend"
 
   backend:
     image: node:8.3.0
+    group: test
     commands:
       - echo "test backend"
 
@@ -23,7 +25,7 @@ pipeline:
     image: appleboy/drone-scp
     host: 128.199.179.216
     username: root
-    password: 1234
+    secrets: [ ssh_key ]
     target: /home/drone/demo
     source:
       - env.js
