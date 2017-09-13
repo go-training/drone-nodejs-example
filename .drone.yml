@@ -10,7 +10,7 @@ clone:
 
 pipeline:
   scp:
-    image: appleboy/drone-ssh
+    image: appleboy/drone-scp
     host:
       - 128.199.179.216
     username: root
