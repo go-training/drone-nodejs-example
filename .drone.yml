@@ -11,7 +11,7 @@ clone:
 pipeline:
   publish:
     image: plugins/docker
-    repo: ${DRONE_REPO}
+    repo: appleboy/drone-nodejs-example
     tags: [ latest ]
     dockerfile: Dockerfile
     secrets: [ docker_username, docker_password ]
