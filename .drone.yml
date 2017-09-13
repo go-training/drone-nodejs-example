@@ -18,3 +18,13 @@ pipeline:
     image: node:8.3.0
     commands:
       - echo "test backend"
+
+  scp:
+    image: appleboy/drone-scp
+    host: 128.199.179.216
+    username: root
+    password: 1234
+    target: /home/drone/demo
+    source:
+      - env.js
+      - redis.js
