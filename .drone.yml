@@ -9,27 +9,12 @@ clone:
     tags: true
 
 pipeline:
-  frontend:
-    image: node:8.3.0
-    group: test
-    commands:
-      - echo "test frontend"
-
-  backend:
-    image: node:8.3.0
-    group: test
-    commands:
-      - echo "test backend"
-
-  scp:
-    image: appleboy/drone-scp
+  ssh:
+    image: appleboy/drone-ssh
     host:
       - 128.199.179.216
     username: root
-    secrets:
-      - source: ssh_key_drone_demo
-        target: ssh_key
-    target: /home/drone/demo
-    source:
-      - env.js
-      - redis.js
+    secrets: [ ssh_key ]
+    script:
+      - echo "Hi I am appleboy"
+      - touch appleboy.txt
