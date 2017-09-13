@@ -23,10 +23,10 @@ pipeline:
 
   scp:
     image: appleboy/drone-scp
-    pull: true
-    host: 128.199.179.216
+    host:
+      - 128.199.179.216
     username: root
-    secrets: [ ssh_key ]
+    password: 1234
     target: /home/drone/demo
     source:
       - env.js
