@@ -13,5 +13,5 @@ pipeline:
     image: plugins/docker
     repo: ${DRONE_REPO}
     tags: [ latest ]
-    dockerfile: Dockerfile.arm
+    dockerfile: Dockerfile
     secrets: [ docker_username, docker_password ]
