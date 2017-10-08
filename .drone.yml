@@ -1,7 +1,3 @@
-workspace:
-  base: /node
-  path: drone/node-example
-
 clone:
   git:
     image: plugins/git
@@ -9,18 +5,8 @@ clone:
     tags: true
 
 pipeline:
-  publish:
-    image: plugins/docker
-    group: publish
-    repo: appleboy/drone-nodejs-example-1
-    tags: [ latest ]
-    dockerfile: Dockerfile
-    secrets: [ docker_username, docker_password ]
-
-  publish:
-    image: plugins/docker
-    group: publish
-    repo: appleboy/drone-nodejs-example-2
-    tags: [ latest ]
-    dockerfile: Dockerfile.arm
-    secrets: [ docker_username, docker_password ]
+  testing:
+    image: node:8.6.0
+    commands:
+      - yarn install --pure-lockfile
+      - yarn run test

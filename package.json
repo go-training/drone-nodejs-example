@@ -6,8 +6,7 @@
   "author": "Bo-Yi Wu <appleboy.tw@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "mocha": "^3.5.0",
-    "redis": "^2.8.0"
+    "mocha": "^3.5.0"
   },
   "scripts": {
     "test": "mocha"
