@@ -1,7 +1,7 @@
 require("../bootstrap");
 
-var should = require("should");
-var request = require('supertest');
+const should = require("should");
+const request = require("supertest");
 
 describe("Test Index,", () => {
   it("Should get 200 response.", done => {
