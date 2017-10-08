@@ -10,3 +10,4 @@ pipeline:
     commands:
       - yarn install --pure-lockfile
       - yarn run test
+      - yarn run lint

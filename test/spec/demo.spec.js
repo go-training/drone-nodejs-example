@@ -14,7 +14,7 @@ describe("Test Index,", () => {
 });
 
 describe("GET /users", () => {
-  it("respond with json", (done) => {
+  it("respond with json", done => {
     request(app)
       .get("/user")
       .set("Accept", "application/json")
