@@ -1,0 +1,5 @@
+--timeout 500000
+--require should
+--reporter spec
+--ui bdd
+--recursive ./app.js
