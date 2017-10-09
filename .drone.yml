@@ -29,6 +29,12 @@ pipeline:
     commands:
       - yarn run lint
 
+  test:
+    image: harbor.wu-boy.com/test/golang
+    group: testing
+    commands:
+      - go version
+
   publish:
     image: plugins/docker
     insecure: true
