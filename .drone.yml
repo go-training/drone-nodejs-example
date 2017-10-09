@@ -72,10 +72,9 @@ pipeline:
     command_timeout: 120
     secrets: [ ssh_key ]
     script:
-      - docker rm -f app
       - rm -rf docker/${DRONE_REPO} && mkdir -p docker/${DRONE_REPO}
       - cp -r drone/${DRONE_REPO}/* docker/${DRONE_REPO}/
-      - cd docker/${DRONE_REPO} && docker build -t appleboy/node . && docker run -d --name app -p 8081:8080 appleboy/node
+      - cd docker/${DRONE_REPO} && docker build -t appleboy/node . && docker rm -f app && docker run -d --name app -p 8081:8080 appleboy/node
     when:
       branch: master
 
