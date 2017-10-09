@@ -34,6 +34,7 @@ pipeline:
     insecure: true
     registry: harbor.wu-boy.com
     repo: harbor.wu-boy.com/test/demo
+    secrets: [ docker_username, docker_password ]
     tags: [ latest ]
 
   # scp:
