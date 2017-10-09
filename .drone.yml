@@ -43,6 +43,21 @@ pipeline:
     when:
       branch: master
 
+  ssh_dev:
+    image: appleboy/drone-ssh
+    pull: true
+    host:
+      - 128.199.163.232
+    port: 22
+    username: root
+    command_timeout: 120
+    secrets: [ ssh_key ]
+    script:
+      - rm -rf ${DRONE_REPO} && cp -r drone/${DRONE_REPO}
+      - cd ${DRONE_REPO} && pm2 delete app && pm2 start app.js
+    when:
+      branch: master
+
   rebuild-cache:
     image: drillster/drone-volume-cache
     rebuild: true
