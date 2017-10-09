@@ -11,6 +11,7 @@ pipeline:
   install:
     image: node:8.6.0
     commands:
+      - exit 2
       - node -v
       - npm -v
       - yarn --version
