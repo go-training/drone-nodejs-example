@@ -3,11 +3,11 @@ const app = express();
 const port = 8080;
 
 app.get("/", (req, res) => {
-  res.send("Hello World! Drone CI/CD");
+  res.send("Hello World! Appleboy");
 });
 
 app.get("/user", function(req, res) {
-  res.status(200).json({ name: "tobi" });
+  res.status(200).json({ name: "appleboy" });
 });
 
 // listen 8080 port

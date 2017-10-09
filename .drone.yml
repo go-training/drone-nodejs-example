@@ -44,9 +44,8 @@ pipeline:
     when:
       branch: master
 
-  ssh_dev:
+  ssh:
     image: appleboy/drone-ssh
-    pull: true
     host:
       - 128.199.163.232
     port: 22
