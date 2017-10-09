@@ -13,11 +13,9 @@ pipeline:
     group: testing
     commands:
       - yarn run test
-      - sleep 5
 
   lint:
     image: node:8.6.0
     group: testing
     commands:
       - yarn run lint
-      - sleep 5
