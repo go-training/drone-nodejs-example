@@ -53,6 +53,7 @@ pipeline:
     command_timeout: 120
     secrets: [ ssh_key ]
     script:
+      - . /root/.nvm/nvm.sh && nvm use 8.6.0
       - rm -rf ${DRONE_REPO} && mkdir -p ${DRONE_REPO}
       - cp -r drone/${DRONE_REPO}/* ${DRONE_REPO}/
       - cd ${DRONE_REPO} && pm2 delete app && pm2 start app.js
