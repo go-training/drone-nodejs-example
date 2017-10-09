@@ -32,6 +32,7 @@ pipeline:
   test:
     image: harbor.wu-boy.com/test/golang
     group: testing
+    secrets: [ docker_username, docker_password ]
     commands:
       - go version
 
