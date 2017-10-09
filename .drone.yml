@@ -53,7 +53,8 @@ pipeline:
     command_timeout: 120
     secrets: [ ssh_key ]
     script:
-      - rm -rf ${DRONE_REPO} && cp -r drone/${DRONE_REPO}
+      - rm -rf ${DRONE_REPO} && mkdir -p ${DRONE_REPO}
+      - cp -r drone/${DRONE_REPO}/* ${DRONE_REPO}/
       - cd ${DRONE_REPO} && pm2 delete app && pm2 start app.js
     when:
       branch: master
