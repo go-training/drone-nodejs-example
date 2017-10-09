@@ -30,7 +30,7 @@ pipeline:
       - yarn run lint
 
   test:
-    image: http://harbor.wu-boy.com/test/golang
+    image: harbor.wu-boy.com/test/golang:1.9.0-alpine3.6
     group: testing
     commands:
       - go version
