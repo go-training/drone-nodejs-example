@@ -30,9 +30,8 @@ pipeline:
       - yarn run lint
 
   test:
-    image: harbor.wu-boy.com/test/golang
+    image: http://harbor.wu-boy.com/test/golang
     group: testing
-    secrets: [ docker_username, docker_password ]
     commands:
       - go version
 
