@@ -39,6 +39,7 @@ pipeline:
     secrets: [ ssh_key ]
     source:
       - "*.js"
+      - process.json
       - node_modules
     when:
       branch: master
@@ -56,7 +57,7 @@ pipeline:
       - . /root/.nvm/nvm.sh && nvm use 8.6.0
       - rm -rf ${DRONE_REPO} && mkdir -p ${DRONE_REPO}
       - cp -r drone/${DRONE_REPO}/* ${DRONE_REPO}/
-      - cd ${DRONE_REPO} && pm2 delete app && pm2 start app.js
+      - cd ${DRONE_REPO} && pm2 restart process.json
     when:
       branch: master
 
