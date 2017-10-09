@@ -60,6 +60,12 @@ pipeline:
     when:
       branch: master
 
+  discord:
+    image: appleboy/drone-discord
+    secrets: [ discord_webhook_id, discord_webhook_token ]
+    when:
+      status: [ success, failure ]
+
   rebuild-cache:
     image: drillster/drone-volume-cache
     rebuild: true
