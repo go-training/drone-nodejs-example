@@ -29,17 +29,12 @@ pipeline:
     commands:
       - yarn run lint
 
-  test:
-    image: harbor.wu-boy.com/test/golang:1.9.0-alpine3.6
-    group: testing
-    commands:
-      - go version
-
   publish:
     image: plugins/docker
     insecure: true
     registry: harbor.wu-boy.com
     repo: harbor.wu-boy.com/test/demo
+    dockerfile: Dockerfile
     secrets: [ docker_username, docker_password ]
     tags: [ latest ]
 
