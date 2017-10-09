@@ -31,7 +31,8 @@ pipeline:
 
   scp:
     image: appleboy/drone-scp
-    host: 128.199.163.232
+    host:
+      - 128.199.163.232
     port: 22
     username: root
     target: /root/drone/${DRONE_REPO}
