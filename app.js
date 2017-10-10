@@ -4,7 +4,7 @@ const port = process.env.PORT || 8080;
 
 app.get("/", (req, res) => {
   res.send(
-    "<h1 style='text-align: center; font-size: 64px'>Hello World! This is k8s Demo site</h1>"
+    "<h1 style='text-align: center; font-size: 64px'>This is k8s Demo site</h1>"
   );
 });
 
