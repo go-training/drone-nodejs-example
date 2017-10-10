@@ -15,7 +15,6 @@ spec:
     metadata:
       labels:
         app: k8s-node-demo
-        tier: frontend
     spec:
       containers:
       - image: appleboy/k8s-node-demo
