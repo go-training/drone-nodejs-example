@@ -38,7 +38,9 @@ pipeline:
         target: docker_username
       - source: demo_password
         target: docker_password
-    tags: [ latest ]
+    tags: [ latest, ${DRONE_TAG} ]
+    when:
+      event: tag
 
   deploy:
     image: quay.io/honestbee/drone-kubernetes
@@ -46,7 +48,7 @@ pipeline:
     deployment: k8s-node-demo
     repo: appleboy/k8s-node-demo
     container: k8s-node-demo
-    tag: latest
+    tag: ${DRONE_TAG}
     secrets:
       - source: k8s_server
         target: plugin_kubernetes_server
@@ -54,6 +56,8 @@ pipeline:
         target: plugin_kubernetes_cert
       - source: k8s_token
         target: plugin_kubernetes_token
+    when:
+      event: tag
 
   # golang:
   #   image: harbor.wu-boy.com/test/golang:1.9.0-alpine3.6
