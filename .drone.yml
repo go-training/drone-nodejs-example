@@ -38,7 +38,7 @@ pipeline:
         target: docker_username
       - source: demo_password
         target: docker_password
-    tags: [ latest, ${DRONE_TAG} ]
+    tags: [ latest, '${DRONE_TAG}' ]
     when:
       event: tag
 
