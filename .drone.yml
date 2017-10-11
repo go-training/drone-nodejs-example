@@ -49,9 +49,9 @@ pipeline:
     repo: appleboy/k8s-node-demo
     container: k8s-node-demo
     tag: ${DRONE_TAG}
-secrets:
-  - source: drone_ssh_key
-    target: ssh_key
+    secrets:
+      - source: drone_ssh_key
+        target: ssh_key
       - source: k8s_cert
         target: plugin_kubernetes_cert
       - source: k8s_token
