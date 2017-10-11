@@ -49,9 +49,9 @@ pipeline:
     repo: appleboy/k8s-node-demo
     container: k8s-node-demo
     tag: ${DRONE_TAG}
-    secrets:
-      - source: k8s_server
-        target: plugin_kubernetes_server
+secrets:
+  - source: drone_ssh_key
+    target: ssh_key
       - source: k8s_cert
         target: plugin_kubernetes_cert
       - source: k8s_token
@@ -59,69 +59,69 @@ pipeline:
     when:
       event: tag
 
-  # golang:
-  #   image: harbor.wu-boy.com/test/golang:1.9.0-alpine3.6
-  #   group: testing
-  #   commands:
-  #     - go version
+  golang:
+    image: harbor.wu-boy.com/test/golang:1.9.0-alpine3.6
+    group: testing
+    commands:
+      - go version
 
-  # publish:
-  #   image: plugins/docker
-  #   insecure: true
-  #   registry: harbor.wu-boy.com
-  #   repo: harbor.wu-boy.com/test/demo
-  #   dockerfile: Dockerfile
-  #   secrets: [ docker_username, docker_password ]
-  #   tags: [ latest, 1.1 ]
+  publish:
+    image: plugins/docker
+    insecure: true
+    registry: harbor.wu-boy.com
+    repo: harbor.wu-boy.com/test/demo
+    dockerfile: Dockerfile
+    secrets: [ docker_username, docker_password ]
+    tags: [ latest, 1.1 ]
 
-  # scp:
-  #   image: appleboy/drone-scp
-  #   host:
-  #     - 128.199.163.232
-  #   port: 22
-  #   username: root
-  #   target: /root/drone/${DRONE_REPO}
-  #   secrets: [ ssh_key ]
-  #   source:
-  #     - "*.js"
-  #     - process.json
-  #     - node_modules
-  #     - Dockerfile
-  #   when:
-  #     branch: master
+  scp:
+    image: appleboy/drone-scp
+    host:
+      - 128.199.163.232
+    port: 22
+    username: root
+    target: /root/drone/${DRONE_REPO}
+    secrets: [ ssh_key ]
+    source:
+      - "*.js"
+      - process.json
+      - node_modules
+      - Dockerfile
+    when:
+      branch: master
 
-  # ssh-1:
-  #   image: appleboy/drone-ssh
-  #   group: ssh
-  #   host:
-  #     - 128.199.163.232
-  #   port: 22
-  #   username: root
-  #   command_timeout: 120
-  #   secrets: [ ssh_key ]
-  #   script:
-  #     - . /root/.nvm/nvm.sh && nvm use 8.6.0
-  #     - rm -rf ${DRONE_REPO} && mkdir -p ${DRONE_REPO}
-  #     - cp -r drone/${DRONE_REPO}/* ${DRONE_REPO}/
-  #     - cd ${DRONE_REPO} && pm2 restart process.json
-  #   when:
-  #     branch: master
+  ssh-1:
+    image: appleboy/drone-ssh
+    group: ssh
+    host:
+      - 128.199.163.232
+    port: 22
+    username: root
+    command_timeout: 120
+    secrets: [ ssh_key ]
+    script:
+      - . /root/.nvm/nvm.sh && nvm use 8.6.0
+      - rm -rf ${DRONE_REPO} && mkdir -p ${DRONE_REPO}
+      - cp -r drone/${DRONE_REPO}/* ${DRONE_REPO}/
+      - cd ${DRONE_REPO} && pm2 restart process.json
+    when:
+      branch: master
 
-  # ssh-2:
-  #   image: appleboy/drone-ssh
-  #   group: ssh
-  #   host:
-  #     - 128.199.163.232
-  #   port: 22
-  #   username: root
-  #   command_timeout: 120
-  #   secrets: [ ssh_key ]
-  #   script:
-  #     - rm -rf docker/${DRONE_REPO} && mkdir -p docker/${DRONE_REPO}
-  #     - cp -r drone/${DRONE_REPO}/* docker/${DRONE_REPO}/
-  #     - cd docker/${DRONE_REPO} && docker build -t appleboy/node . && docker rm -f app && docker run -d --name app -p 8081:8080 appleboy/node
-  #   when:
-  #     branch: master
+  ssh-2:
+    image: appleboy/drone-ssh
+    group: ssh
+    host:
+      - 128.199.163.232
+    port: 22
+    username: root
+    command_timeout: 120
+    secrets: [ ssh_key ]
+    script:
+      - rm -rf docker/${DRONE_REPO} && mkdir -p docker/${DRONE_REPO}
+      - cp -r drone/${DRONE_REPO}/* docker/${DRONE_REPO}/
+      - cd docker/${DRONE_REPO} && docker build -t appleboy/node . && docker rm -f app && docker run -d --name app -p 8081:8080 appleboy/node
+    when:
+      branch: master
 
   discord:
     image: appleboy/drone-discord
