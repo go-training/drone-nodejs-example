@@ -1,4 +1,21 @@
 pipeline:
+  add:
+    image: node:8.6.0
+    commands:
+      - touch appleboy.txt
+      - echo "appleboy" > appleboy.txt
+
+  git_push:
+    image: appleboy/drone-git-push
+    pull: true
+    secrets: [ git_push_ssh_key ]
+    force: false
+    commit: true
+    commit_message: "[skip ci] Updated translations via Crowdin"
+    when:
+      event: [ push ]
+      branch: [ master ]
+
   restore-cache:
     image: drillster/drone-volume-cache
     restore: true
