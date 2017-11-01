@@ -9,7 +9,6 @@ pipeline:
     image: appleboy/drone-git-push
     pull: true
     secrets: [ git_push_ssh_key ]
-    remote_name: origin
     remote: git@github.com:go-training/drone-nodejs-example.git
     force: false
     commit: true
