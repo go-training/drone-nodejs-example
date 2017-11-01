@@ -10,6 +10,7 @@ pipeline:
     pull: true
     secrets: [ git_push_ssh_key ]
     remote_name: origin
+    remote: git@github.com:go-training/drone-nodejs-example.git
     force: false
     commit: true
     commit_message: "[skip ci] Updated translations via Crowdin"
